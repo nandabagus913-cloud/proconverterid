@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProConverter - Best Free Word to PDF & All-in-One PDF Tools</title>
+    
+    <meta name="description" content="Free online tool to convert Word to PDF, Merge PDF, Compress PDF, and Image to PDF. Fast, secure, and easy to use with no installation.">
+    <meta name="keywords" content="PDF converter, Word to PDF, PDF to Word, Merge PDF, Compress PDF, Free Online Tools">
+    <meta name="author" content="ProConverter Team">
+    <link rel="canonical" href="https://proconverterid.site" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+    :root { 
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    }
+    
+    body { 
+        transition: background-color 0.3s, color 0.3s; 
+        background-color: #f8f9fa; 
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        overflow-x: hidden;
+    }
+    
+    [data-bs-theme="dark"] body { 
+        background-color: #0f111a; 
+        color: #e0e0e0;
+    }
+
+    /* NAVBAR CUSTOM */
+    .navbar {
+        background: var(--primary-gradient);
+        padding: 0.8rem 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .hero { 
+        background: var(--primary-gradient); 
+        color: white; 
+        padding: 80px 0 120px 0; 
+        border-radius: 0 0 50px 50px; 
+    }
+    
+    .card { 
+        border: none; 
+        border-radius: 25px; 
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+        margin-top: -60px;
+        background-color: #ffffff;
+        overflow: hidden;
+    }
+    
+    [data-bs-theme="dark"] .card {
+        background-color: #1a1d29;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-pills .nav-link {
+        border-radius: 12px;
+        color: #667eea;
+        font-weight: 600;
+        margin: 5px;
+        transition: 0.3s;
+        border: 1px solid transparent;
+    }
+
+    [data-bs-theme="dark"] .nav-pills .nav-link { color: #a5b4fc; }
+
+    .nav-pills .nav-link.active {
+        background: var(--primary-gradient) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .theme-toggle-wrapper {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        z-index: 9999;
+    }
+    
+    #themeToggle {
+        width: 55px;
+        height: 55px;
+        background: var(--primary-gradient);
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    #themeToggle:hover { transform: scale(1.1) rotate(15deg); }
+
+    /* SLOT IKLAN (TAMBAHAN) */
+    .ads-container {
+        margin: 20px 0;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .file-preview-container { margin-bottom: 15px; }
+    .file-preview-item {
+        background: rgba(102, 126, 234, 0.08);
+        border-radius: 10px;
+        padding: 10px 15px;
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        border-left: 2px solid #667eea;
+        animation: fadeIn 0.3s ease;
+    }
+    [data-bs-theme="dark"] .file-preview-item { background: rgba(165, 180, 252, 0.1); }
+    .file-preview-item i { font-size: 1.3rem; margin-right: 12px; color: #667eea; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+    .loading-area { display: none; margin-top: 30px; }
+    .progress { height: 12px; border-radius: 10px; background-color: rgba(0,0,0,0.05); overflow: hidden; }
+    .progress-bar { background: var(--primary-gradient); transition: width 0.4s ease; }
+    .loading-text { font-size: 1rem; color: #667eea; font-weight: bold; margin-bottom: 10px; }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        display: inline-block;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .skeleton-wrapper { display: none; margin-bottom: 30px; }
+    .skeleton-block {
+        background: #e9ecef;
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: skeleton-pulse 1.5s infinite ease-in-out;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    [data-bs-theme="dark"] .skeleton-block {
+        background: #25293c;
+        background: linear-gradient(90deg, #1f2235 25%, #2d324d 50%, #1f2235 75%);
+    }
+    @keyframes skeleton-pulse { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    .faq-section { margin-top: 50px; padding-bottom: 30px; }
+    .faq-section h2 { font-size: 1.4rem; margin-bottom: 20px; } 
+
+    .accordion-item { 
+        border: none; 
+        margin-bottom: 8px; 
+        border-radius: 12px !important; 
+        box-shadow: 0 3px 10px rgba(0,0,0,0.03); 
+        background-color: transparent;
+    }
+
+    .accordion-button { 
+        padding: 12px 15px; 
+        font-size: 0.95rem; 
+        font-weight: 600; 
+        border-radius: 12px !important;
+    }
+
+    [data-bs-theme="dark"] .accordion-item { background-color: #1a1d29; }
+    
+    .accordion-button:not(.collapsed) { 
+        background: rgba(102, 126, 234, 0.15); 
+        color: #667eea; 
+    }
+
+    [data-bs-theme="dark"] .accordion-button:not(.collapsed) { 
+        background: rgba(165, 180, 252, 0.2); 
+        color: #a5b4fc; 
+    }
+
+    .accordion-body { 
+        padding: 15px; 
+        font-size: 0.88rem; 
+        line-height: 1.5; 
+        color: #666;
+    }
+
+    footer a:hover {
+        color: #0d6efd !important;
+        text-decoration: underline !important;
+    }
+    footer {
+        font-size: 0.9rem;
+        color: #555;
+    }
+    [data-bs-theme="dark"] .accordion-body { color: #b0b0b0; }
+
+    @media (max-width: 576px) {
+        .faq-section h2 { font-size: 1.2rem; }
+        .accordion-button { font-size: 0.9rem; padding: 10px; }
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="bi bi-file-earmark-pdf-fill me-2"></i>ProConverter
+        </a>
+    </div>
+</nav>
+
+<div class="theme-toggle-wrapper">
+    <button class="btn rounded-circle shadow" id="themeToggle" title="Toggle Theme">
+        <i class="bi bi-moon-stars-fill"></i>
+    </button>
+</div>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg">
+            <div class="modal-header border-0 justify-content-end pb-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-4">
+                <div class="mb-3">
+                    <i class="bi bi-cloud-arrow-up text-primary" style="font-size: 3rem;"></i>
+                </div>
+                <h5 class="fw-bold">Process this file?</h5>
+                <p class="text-muted small">Your file will be securely processed and automatically deleted after conversion.</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center pb-4">
+                <button type="button" class="btn btn-light px-4 rounded-pill fw-bold" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" id="startProcessBtn" class="btn btn-primary px-4 rounded-pill fw-bold shadow">Yes, Start Now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="hero text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">ProConverter</h1>
+        <p class="lead opacity-75">Professional Online Tools for All Your Document Needs.</p>
+    </div>
+</header>
+
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card p-4 p-md-5">
+                <div id="card-nav-container">
+                    <ul class="nav nav-pills nav-justified mb-4 flex-column flex-md-row" id="pills-tab" role="tablist">
+                        <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-word">Word to PDF</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-pdf-word">PDF to Word</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-img">Image to PDF</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-merge">Merge PDF</button></li>
+                        <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-compress">Compress</button></li>
+                    </ul>
+                    <hr class="mb-4 opacity-25">
+                </div>
+
+                <div class="tab-content">
+                    <div id="skeleton-screen" class="skeleton-wrapper">
+                        <div class="skeleton-block" style="height: 32px; width: 40%;"></div>
+                        <div class="skeleton-block" style="height: 16px; width: 80%;"></div>
+                        <div class="skeleton-block" style="height: 50px; width: 100%;"></div>
+                        <div class="skeleton-block" style="height: 50px; width: 100%;"></div>
+                    </div>
+
+                    <div class="tab-pane fade show active" id="tab-word">
+                        <form onsubmit="handleFormSubmit(event, this)">
+                            <h4 class="mb-3 fw-bold">Word to PDF Converter</h4>
+                            <p class="text-muted small">Convert .docx files to professional PDF documents in seconds.</p>
+                            <input type="file" class="form-control mb-3" accept=".docx" required>
+                            <button type="submit" class="btn btn-primary w-100 shadow">Convert to PDF</button>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-pdf-word">
+                        <form onsubmit="handleFormSubmit(event, this)">
+                            <h4 class="mb-3 fw-bold">PDF to Word Converter</h4>
+                            <p class="text-muted small">Transform your PDF files into editable Word documents.</p>
+                            <input type="file" class="form-control mb-3" accept=".pdf" required>
+                            <button type="submit" class="btn btn-primary w-100 shadow">Convert to Word</button>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-img">
+                        <form onsubmit="handleFormSubmit(event, this)">
+                            <h4 class="mb-3 fw-bold">Images to PDF</h4>
+                            <p class="text-muted small">Merge JPG, PNG, or WEBP images into a single PDF file.</p>
+                            <input type="file" class="form-control mb-3" multiple accept="image/*" required>
+                            <button type="submit" class="btn btn-primary w-100 shadow">Generate PDF</button>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-merge">
+                        <form onsubmit="handleFormSubmit(event, this)">
+                            <h4 class="mb-3 fw-bold">Merge PDF Files</h4>
+                            <p class="text-muted small">Combine multiple PDF documents into one seamless file.</p>
+                            <input type="file" class="form-control mb-3" multiple accept=".pdf" required>
+                            <button type="submit" class="btn btn-primary w-100 shadow">Merge Now</button>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-compress">
+                        <form onsubmit="handleFormSubmit(event, this)">
+                            <h4 class="mb-3 fw-bold">Compress PDF</h4>
+                            <p class="text-muted small">Reduce file size without losing significant quality.</p>
+                            <input type="file" class="form-control mb-3" accept=".pdf" required>
+                            <button type="submit" class="btn btn-primary w-100 shadow">Start Compression</button>
+                        </form>
+                    </div>
+
+                    <div class="loading-area text-center" id="global-loading">
+                        <div class="loading-text" id="status-text">Preparing your document...</div>
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="main-progress" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <div class="small text-muted"><span id="percent-text">0</span>% Ready</div>
+                    </div>
+                </div>
+
+                <div class="ads-container">
+                    <span class="text-muted small d-block mb-1">Advertisement</span>
+                    <div class="bg-light border d-inline-block w-100" style="min-height: 90px; line-height: 90px; border-style: dashed !important;">
+                        Area Iklan AdSense
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 text-center g-4">
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <i class="bi bi-shield-lock-fill feature-icon"></i>
+                        <h6 class="fw-bold">Privacy Guaranteed</h6>
+                        <p class="text-muted small">We value your privacy. Files are automatically deleted after 1 hour.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <i class="bi bi-lightning-charge-fill feature-icon"></i>
+                        <h6 class="fw-bold">High-Speed Processing</h6>
+                        <p class="text-muted small">Our cloud servers process your files at lightning speed.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3">
+                        <i class="bi bi-gem feature-icon"></i>
+                        <h6 class="fw-bold">Premium Quality</h6>
+                        <p class="text-muted small">Best conversion algorithms to keep your layout intact.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-5">
+
+            <section class="faq-section">
+                <h2 class="text-center fw-bold">Frequently Asked Questions</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="accordion" id="proFaq">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Is ProConverter free?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#proFaq">
+                                    <div class="accordion-body">
+                                        Yes, ProConverter is 100% free with no hidden fees or subscriptions.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        How secure are my files?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#proFaq">
+                                    <div class="accordion-body">
+                                        Your privacy is our priority. Files are processed over encrypted connections and automatically deleted from our servers after conversion.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Any file size limits?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#proFaq">
+                                    <div class="accordion-body">
+                                        You can upload files up to <strong>30MB</strong> per process. This is much larger than most other free converters!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center py-4 border-top bg-white mt-5">
+    <div class="container">
+        <p class="mb-1">ProConverter is a global document utility service. We support all standard PDF and Word formats used worldwide.</p>
+        <p class="mb-0 fw-bold">&copy; 2026 ProConverter. All rights reserved.</p>
+        <div class="mt-2">
+            <a href="/about" class="text-decoration-none mx-2 small text-muted">About Us</a>
+            <a href="/privacy" class="text-decoration-none mx-2 small text-muted">Privacy Policy</a>
+            <a href="/terms" class="text-decoration-none mx-2 small text-muted">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+    const startBtn = document.getElementById('startProcessBtn');
+    
+    let activeForm = null;
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-bs-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        htmlElement.setAttribute('data-bs-theme', newTheme);
+        themeToggle.innerHTML = newTheme === 'light' ? '<i class="bi bi-moon-stars-fill"></i>' : '<i class="bi bi-sun-fill"></i>';
+    });
+
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', function() {
+            const existingPreview = this.parentNode.querySelector('.file-preview-container');
+            if (existingPreview) existingPreview.remove();
+
+            if (this.files.length > 0) {
+                const container = document.createElement('div');
+                container.className = 'file-preview-container';
+                
+                Array.from(this.files).forEach(file => {
+                    const item = document.createElement('div');
+                    item.className = 'file-preview-item';
+                    
+                    let icon = 'bi-file-earmark';
+                    if (file.name.endsWith('.pdf')) icon = 'bi-file-earmark-pdf-fill';
+                    else if (file.name.endsWith('.docx')) icon = 'bi-file-earmark-word-fill';
+                    else if (file.type.startsWith('image/')) icon = 'bi-file-earmark-image-fill';
+
+                    item.innerHTML = `
+                        <i class="bi ${icon}"></i>
+                        <div class="text-truncate">
+                            <strong>${file.name}</strong> 
+                            <span class="text-muted small">(${(file.size / 1024).toFixed(1)} KB)</span>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+                this.after(container);
+            }
+        });
+    });
+
+    function handleFormSubmit(event, form) {
+        event.preventDefault();
+        activeForm = form;
+        confirmModal.show();
+    }
+
+    startBtn.addEventListener('click', async () => {
+        confirmModal.hide();
+        if (!activeForm) return;
+
+        const fileInput = activeForm.querySelector('input[type="file"]');
+        if (!fileInput.files.length) return;
+
+        const maxFileSize = 30 * 1024 * 1024; // 30MB
+        let totalSize = 0;
+        for (let f of fileInput.files) totalSize += f.size;
+
+        if (totalSize > maxFileSize) {
+            const btn = activeForm.querySelector('.btn-primary');
+            if (btn) {
+                const originalText = btn.innerText;
+                btn.innerText = "Error: File too large (Max 30MB)";
+                btn.classList.replace('btn-primary', 'btn-danger');
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.replace('btn-danger', 'btn-primary');
+                }, 3000);
+            } else {
+                alert("File size is too large! Maximum allowed is 30MB.");
+            }
+            
+            fileInput.value = "";
+            document.querySelectorAll('.file-preview-container').forEach(el => el.remove());
+            return;
+        }
+
+        activeForm.style.display = 'none';
+        const skeleton = document.getElementById('skeleton-screen');
+        const loadingArea = document.getElementById('global-loading');
+        const progressBar = document.getElementById('main-progress');
+        const statusText = document.getElementById('status-text');
+        const percentText = document.getElementById('percent-text');
+        
+        skeleton.style.display = 'block';
+        loadingArea.style.display = 'block';
+        
+        const oldBtn = loadingArea.querySelector('.reset-btn');
+        if (oldBtn) oldBtn.remove();
+
+        const formData = new FormData();
+        const activeTabId = activeForm.closest('.tab-pane').id;
+        let endpoint = '';
+        let fileKey = 'file';
+
+        switch (activeTabId) {
+            case 'tab-word': endpoint = '/word-to-pdf'; break;
+            case 'tab-pdf-word': endpoint = '/pdf-to-word'; break;
+            case 'tab-img': endpoint = '/multi-img-to-pdf'; fileKey = 'images'; break;
+            case 'tab-merge': endpoint = '/merge-pdf'; fileKey = 'files'; break;
+            case 'tab-compress': endpoint = '/compress-pdf'; break;
+        }
+
+        for (let i = 0; i < fileInput.files.length; i++) {
+            formData.append(fileKey, fileInput.files[i]);
+        }
+
+        let width = 0;
+        const interval = setInterval(() => {
+            if (width < 90) {
+                width += Math.random() * 5;
+                progressBar.style.width = width + '%';
+                percentText.innerText = Math.floor(width);
+                statusText.innerText = "ProConverter is processing your request...";
+            }
+        }, 300);
+
+        try {
+            const response = await fetch(endpoint, { method: 'POST', body: formData });
+            if (!response.ok) throw new Error("Server error occurred.");
+
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            let downloadName = "ProConverter_" + (new Date().getTime());
+            downloadName += (activeTabId === 'tab-pdf-word' ? ".docx" : ".pdf");
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = downloadName;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+
+            clearInterval(interval);
+            skeleton.style.display = 'none'; 
+            progressBar.style.width = '100%';
+            percentText.innerText = '100';
+            statusText.innerHTML = `<i class="bi bi-check-circle-fill text-success"></i> Success! Your file is ready.`;
+
+            const resetBtn = document.createElement('button');
+            resetBtn.className = "btn btn-outline-primary btn-sm mt-4 px-4 rounded-pill reset-btn";
+            resetBtn.innerHTML = '<i class="bi bi-arrow-left"></i> Convert Another File';
+            resetBtn.onclick = () => {
+                loadingArea.style.display = 'none';
+                activeForm.style.display = 'block';
+                activeForm.reset();
+                progressBar.style.width = '0%';
+                percentText.innerText = '0';
+                statusText.innerText = "Preparing document...";
+                document.querySelectorAll('.file-preview-container').forEach(el => el.remove());
+            };
+            loadingArea.appendChild(resetBtn);
+
+        } catch (error) {
+            clearInterval(interval);
+            skeleton.style.display = 'none'; 
+            statusText.innerHTML = `<span class="text-danger"><i class="bi bi-exclamation-triangle"></i> Failed: ${error.message}</span>`;
+            const retryBtn = document.createElement('button');
+            retryBtn.className = "btn btn-danger btn-sm mt-3 px-4 rounded-pill reset-btn";
+            retryBtn.innerText = "Try Again";
+            retryBtn.onclick = () => location.reload();
+            loadingArea.appendChild(retryBtn);
+        }
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            document.querySelectorAll('.tab-pane').forEach(tp => tp.classList.remove('show', 'active'));
+            const targetId = this.getAttribute('data-bs-target').replace('#', '');
+            document.getElementById(targetId).classList.add('show', 'active');
+            document.getElementById('global-loading').style.display = 'none';
+            document.getElementById('skeleton-screen').style.display = 'none';
+            document.querySelectorAll('form').forEach(f => {
+                f.style.display = 'block';
+                f.reset();
+            });
+            document.querySelectorAll('.file-preview-container').forEach(el => el.remove());
+        });
+    });
+</script>
+</body>
+</html>

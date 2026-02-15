@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ProConverter Official</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-color: #667eea;
+        }
+
+        body { 
+            background-color: #f4f7fe; 
+            padding: 40px 0; 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            color: #444;
+        }
+
+        /* Dark Mode Support */
+        [data-bs-theme="dark"] body { background-color: #0f111a; color: #e0e0e0; }
+        [data-bs-theme="dark"] .about-box { background: #1a1d29; border: 1px solid rgba(255,255,255,0.05); }
+        [data-bs-theme="dark"] h1, [data-bs-theme="dark"] h2 { color: #fff; }
+        [data-bs-theme="dark"] .feature-card { border-color: #2d324d; background: #1f2235; }
+        [data-bs-theme="dark"] .bg-light { background-color: #25293c !important; }
+
+        .about-box { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 30px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .accent-text { 
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800; 
+        }
+
+        .instansi-badge { 
+            background: rgba(102, 126, 234, 0.1); 
+            color: var(--accent-color); 
+            padding: 6px 16px; 
+            border-radius: 50px; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            display: inline-block; 
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 800; color: #2d3436; margin-bottom: 15px; }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-top: 35px; margin-bottom: 15px; color: #2d3436; position: relative; padding-left: 15px; }
+        h2::before { content: ''; position: absolute; left: 0; top: 20%; height: 60%; width: 4px; background: var(--primary-gradient); border-radius: 2px; }
+
+        p { line-height: 1.7; font-size: 0.95rem; color: #636e72; margin-bottom: 20px; }
+        [data-bs-theme="dark"] p { color: #b0b0b0; }
+
+        /* Tombol ramping & tidak membengkak */
+        .btn-back {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.3s;
+            border: 1.5px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-back:hover {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-card { 
+            border: 1px solid #f1f3f9; 
+            padding: 25px 20px; 
+            border-radius: 20px; 
+            transition: 0.3s; 
+            height: 100%;
+            background: #fff;
+        }
+        .feature-card:hover { 
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .feature-card i { font-size: 2rem; margin-bottom: 15px; display: block; }
+
+        .contact-info {
+            border-left: 3px solid var(--accent-color);
+            background: #f8faff;
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-box { padding: 25px; }
+            h1 { font-size: 1.8rem; }
+            .btn-back { margin-bottom: 30px !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+            <div class="about-box">
+                <div class="mb-4">
+                    <a href="/" class="btn-back">
+                        <i class="bi bi-chevron-left"></i> Back to Tool
+                    </a>
+                </div>
+                
+                <div class="text-center mb-5">
+                    <span class="instansi-badge">Official ProConverter Project</span>
+                    <h1>About <span class="accent-text">ProConverter</span></h1>
+                    <p class="lead mx-auto" style="max-width: 600px;">Transforming the way you handle documents with speed, security, and simplicity.</p>
+                </div>
+                
+                <hr class="my-4 opacity-50">
+
+                <h2>Our Mission</h2>
+                <p>
+                    <strong>ProConverter</strong> (part of <em>proconverterid.site</em>) was born from the need for accessible productivity tools. In an era where document management is essential, we provide a professional-grade ecosystem that is 100% free. No hidden costs, no mandatory registrations, and no compromise on quality.
+                </p>
+
+                <div class="row my-5 g-4 text-center">
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="bi bi-cpu-fill text-primary"></i>
+                            <h6 class="fw-bold">Fast Processing</h6>
+                            <p class="small mb-0">Powered by high-performance cloud automation for near-instant results.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="bi bi-shield-check-fill text-success"></i>
+                            <h6 class="fw-bold">Privacy First</h6>
+                            <p class="small mb-0">Documents are strictly processed in-memory and auto-deleted every hour.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <i class="bi bi-globe2 text-info"></i>
+                            <h6 class="fw-bold">Global Access</h6>
+                            <p class="small mb-0">Designed for everyone—students, teachers, and professionals worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Why Choose Us?</h2>
+                <p>
+                    Unlike other platforms that limit your file size or watermarks your PDF, ProConverter ensures a clean and premium output. By utilizing advanced Python-based conversion engines, we maintain the integrity of your layouts, fonts, and images.
+                </p>
+
+                <h2>Our Background</h2>
+                <p>
+                    Developed by the tech team at <strong>Jakastra Official</strong> in collaboration with <strong>Sisfo Al Falah Putak</strong>, we focus on digital transformation for educational and professional communities. We believe technology should be a bridge, providing high-quality tools that are usually locked behind paywalls to everyone for free.
+                </p>
+
+                <div class="mt-5">
+                    <h2>Get In Touch</h2>
+                    <p>Have suggestions or facing technical issues? We're here to help.</p>
+                    <div class="contact-info">
+                        <p class="mb-1 fw-bold text-dark">Official Support Email:</p>
+                        <a href="mailto:support@proconverterid.site" class="text-decoration-none fw-bold" style="color: var(--accent-color);">
+                            support@proconverterid.site
+                        </a>
+                    </div>
+                </div>
+
+                <footer class="mt-5 pt-4 border-top text-center text-muted small">
+                    <p class="mb-0">&copy; 2026 <strong>ProConverter</strong>. All Rights Reserved.</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+</script>
+
+</body>
+</html>
