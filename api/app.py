@@ -1,20 +1,20 @@
 import os
-from flask import Flask, render_template, request, send_file, after_this_request, make_response, send_from_directory
+import subprocess
+from flask import Flask, render_template, request, send_file, after_this_request, make_response
 from werkzeug.utils import secure_filename
 
 # Library untuk pemrosesan dokumen
-from docx2pdf import convert
 from pdf2docx import Converter
 from PIL import Image
 from pypdf import PdfReader, PdfWriter
 
-# Inisialisasi Flask dengan path yang benar untuk Vercel
+# Inisialisasi Flask
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 # --- KONFIGURASI SERVER ---
 app.config['MAX_CONTENT_LENGTH'] = 30 * 1024 * 1024 
 
-# Vercel mewajibkan folder /tmp untuk menulis file sementara
+# Gunakan /tmp untuk menulis file sementara (Standar Docker & Cloud)
 UPLOAD_FOLDER = '/tmp'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
@@ -27,26 +27,22 @@ def hapus_file(filepath):
     except Exception as e:
         print(f"Gagal menghapus {filepath}: {e}")
 
-# --- ROUTES SEO & VERIFIKASI (DILENGKAPI) ---
+# --- ROUTES SEO & VERIFIKASI ---
 
 @app.route('/ads.txt')
 def ads_txt():
-    """Rute untuk AdSense. Ganti pub-0000000000000000 dengan ID asli Anda."""
     return "google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0", 200, {'Content-Type': 'text/plain'}
 
 @app.route('/google5b4bfe5fde837eb8.html')
 def google_verification():
-    """Rute virtual untuk verifikasi Google Search Console."""
     return "google-site-verification: google5b4bfe5fde837eb8.html"
 
 @app.route('/robots.txt')
 def robots():
-    """Memberi tahu Google bagian mana yang boleh diindeks."""
     return "User-agent: *\nDisallow: /uploads/\nAllow: /", 200, {'Content-Type': 'text/plain'}
 
 @app.route('/sitemap.xml')
 def sitemap():
-    """Peta situs yang sudah diperbarui dengan domain baru Anda."""
     xml = """<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url><loc>https://proconverterid.site/</loc></url>
@@ -76,18 +72,28 @@ def terms():
 def about():
     return render_template('about.html')
 
-# --- FITUR KONVERSI (TIDAK ADA YANG DIHAPUS) ---
+# --- FITUR KONVERSI ---
 
-# 1. WORD KE PDF
+# 1. WORD KE PDF (MENGGUNAKAN LIBREOFFICE DI SERVER)
 @app.route('/word-to-pdf', methods=['POST'])
 def word_to_pdf():
     file = request.files['file']
+    if not file: return "No file", 400
+    
     filename = secure_filename(file.filename)
     input_path = os.path.join(UPLOAD_FOLDER, filename)
-    output_path = os.path.splitext(input_path)[0] + ".pdf"
-    
     file.save(input_path)
-    convert(input_path, output_path)
+    
+    # Memanggil LibreOffice Headless untuk konversi Word ke PDF
+    try:
+        subprocess.run([
+            'libreoffice', '--headless', '--convert-to', 'pdf', 
+            '--outdir', UPLOAD_FOLDER, input_path
+        ], check=True)
+        
+        output_path = os.path.splitext(input_path)[0] + ".pdf"
+    except Exception as e:
+        return f"Error konversi: {str(e)}", 500
 
     @after_this_request
     def cleanup(response):
@@ -100,14 +106,19 @@ def word_to_pdf():
 @app.route('/pdf-to-word', methods=['POST'])
 def pdf_to_word():
     file = request.files['file']
+    if not file: return "No file", 400
+    
     filename = secure_filename(file.filename)
     input_path = os.path.join(UPLOAD_FOLDER, filename)
     output_path = os.path.splitext(input_path)[0] + ".docx"
     
     file.save(input_path)
-    cv = Converter(input_path)
-    cv.convert(output_path)
-    cv.close()
+    try:
+        cv = Converter(input_path)
+        cv.convert(output_path)
+        cv.close()
+    except Exception as e:
+        return f"Error konversi: {str(e)}", 500
 
     @after_this_request
     def cleanup(response):
@@ -212,8 +223,5 @@ def multi_img_to_pdf():
     return send_file(output_path, as_attachment=True)
 
 # --- MENJALANKAN APLIKASI ---
-# Tambahkan ini untuk entry point Vercel
-app = app
-
 if __name__ == '__main__':
     app.run(debug=True)
